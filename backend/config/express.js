@@ -2,6 +2,9 @@ const express = require('express')
 const router = require('../routes/index.route');
 const logger = require('./logger');
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
+
+require('./mongoose')
 
 const app = express();
 
@@ -13,6 +16,7 @@ app.use((req, res, next) => {
 app.use(cors());
 
 app.use(express.json());
+app.use(cookieParser())
 
 app.use('/api/v1', router)
 
